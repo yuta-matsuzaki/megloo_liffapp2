@@ -1,1 +1,188 @@
-a
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megloo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+</head>
+<body>
+    <form name="form1">
+    <!-- <form class="w-75 mx-auto" name="form1">
+        <p class="mt-3">時刻</p>
+        <div>
+            <input type="time" class="form-control w-100 mt-1" name="name" placeholder="" required>
+        </div>
+        -->
+        <p class="mt-3">利用</p>
+            <select class="form-control w-100 mt-1" name="riyou" required>
+                <option value="貸出">貸出</option>
+                <option value="返却">返却</option>
+            </select>
+      	<p class="mt-3">店舗</p>
+            <select class="form-control w-100 mt-1" name="tenpo" required>
+                <option value="選択肢1">選択肢1</option>
+                <option value="選択肢2">選択肢2</option>
+                <option value="選択肢3">選択肢3</option>
+                <option value="選択肢4">選択肢4</option>
+                <option value="選択肢5">選択肢5</option>
+            </select>
+        <p class="mt-3">個数</p>
+            <select class="form-control w-100 mt-1" name="kosuu" required>
+                <option value="" selected hidden>選択してください</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        
+        <p class="mt-3">備考</p>
+        <div>
+            <input class="form-control w-100 mt-1" name="bikou" id="bikou" required>
+        </div>
+        
+        <script type="text/javascript">
+            function get(varName){
+                var varLimit=3;
+                var i;
+                var urlAry;
+                var varAry;
+                var workAry;
+                urlAry=location.href.split('?',2);
+                if(urlAry[1])varAry=urlAry[1].split('&',varLimit);
+                if(varAry){
+                    for(i=0;i<varAry.length;i++){
+                        workAry=varAry[i].split('=',2)
+                        if(workAry[0]==varName)return workAry[1];
+                    }
+                }
+                return null;
+            }
+        var x=get("riyou");
+        var xx=decodeURI(x);
+        document.form1.riyou.value=xx;
+        var y=get("id");
+        var yy=decodeURI(y);
+        document.form1.tenpo.value=yy;
+        var z=get("note");
+        var zz=decodeURI(z);
+        document.getElementById("bikou").value=zz;
+        </script>        
+        
+        
+        <input type="submit" class="mt-4 btn btn-primary" value="送信">
+        
+        
+        <!--
+        <dl>
+        <dt>店舗名(今はURL)</dt>
+        <dd>
+          <input type="text" name="URL" id="inputurl">
+        </dd>
+        </dl>
+        
+        <dl>
+        <dt>店舗名</dt>
+        <dd>
+          <input type="text" name="URL2" id="inputurl">
+        </dd>
+        </dl>
+      
+    </form>
+    
+    <p> Hrer is <span id="url"></span>.</p>
+    <script>
+      var url = window.location.href
+      var param = location.search;
+      document.getElementById('url').innerHTML = url;
+      document.getElementById("inputurl").value = url;
+      document.getElementById("thisparam").innerHTML = param;
+      document.getElementById("inputparam").value = param;
+      var getQueryVars = function() {
+          var vars = [];
+          var query_list = window.location.search.substring(1).split('&');
+          var tmp_arr;
+          query_list.forEach( function(e, i, a) {
+              tmp_arr = e.split('=');
+              vars[ tmp_arr[0] ] = tmp_arr[1];
+          })
+          return vars;
+      }
+      var query_vars = getQueryVars();
+      var id = query_vars['id'];
+    </script> 
+    <p class="mt-3">id</p>
+    <script>
+    function getUrlParam(param){
+        var pageUrl = window.location.search.substring(1);
+        var urlVar = pageUrl.split('&');
+        for (var i = 0; i < urlVar.length; i++) 
+        {
+            var paramName = urlVar[i].split('=');
+            if (paramName[0] == param) 
+            {
+                return decodeURI(paramName[1]); 
+            }
+        }
+    }
+    $(function() {
+        var para = getUrlParam('contact');			
+        if(!(para == null || para == '')){
+           $( "select[name ='contact']").val(para);
+        }
+    });
+    document.form1.contact.value=para;
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    -->
+  
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script>
+        $(document).ready(function () {
+            const liffId = "1660750765-x0dNKQzZ";
+            initializeLiff(liffId);
+        })
+        function initializeLiff(liffId) {
+            liff.init({
+                liffId: liffId
+            }).then(() => {
+                initializeApp();
+            }).catch((err) => {
+                console.log('LIFF Initialization failed ', err);
+            });
+        }
+        function sendText(text) {
+            liff.sendMessages([{
+                'type': 'text',
+                'text': text
+            }]).then(function () {
+                liff.closeWindow();
+            }).catch(function (error) {
+                window.alert('Failed to send message ' + error);
+            });
+        }
+
+        const params = (new URL(document.location)).searchParams;
+        const key = params.get('key');
+
+        $(function () {
+            $('form').submit(function () {
+                const riyou    = $('select[name="riyou"]').val();
+                const tenpo = $('select[name="tenpo"]').val();
+                const kosuu  = $('select[name="kosuu"]').val();
+                const bikou  = $('input[name="bikou"]').val();
+                const msg = `${riyou}＠${tenpo}\n容器数：${kosuu}\n備考：${bikou}`;
+                sendText(msg);
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>
